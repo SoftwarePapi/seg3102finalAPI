@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from django.contrib.auth.mixins import UserPassesTestMixin
 
-from v1.models import Email, User
-from v1.serializers import CommentsSerializer, CoursesSerializer, Section_studentsSerializer,
+from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users
+from v1.serializers import CommentsSerializer, CoursesSerializer, Section_studentsSerializer
 from v1.serializers import SectionsSerializer, Team_MembersSerializer, TeamsSerializer, ThreadsSerializer, UsersSerializer
 #from v1.permissions import IsOwnerOrReadOnly <-- not implemented
 
