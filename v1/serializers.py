@@ -6,7 +6,7 @@ class UsersSerializer(serializers.ModelSerializer):
         model = Users
         fields = "__all__"
     def create(self, validated_data):
-        return User.objects.create(**validated_data)
+        return Users.objects.create(**validated_data)
     def update(self, instance, validated_data):
         instance.user_id = validated_data.get('user_id', instance.user_id)
         instance.account_type = validated_data.get('account_type', instance.account_type)
