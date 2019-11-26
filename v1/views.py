@@ -31,6 +31,10 @@ class Users_list(generics.ListCreateAPIView):
     queryset = Users.objects.all()
     serializer_class = UsersSerializer
 
+    # def get_queryset(self):
+    #     import pdb;pdb.set_trace()
+    #     return Users.objects.filter(**self.request.query_params)
+
 class Users_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
 
@@ -77,7 +81,7 @@ class Team_Members_list(generics.ListCreateAPIView):
     #permission_classes = [permissions.IsAuthenticated]
 
     queryset = Team_Members.objects.all()
-    serializer_class = SectionsSerializer
+    serializer_class = Team_MembersSerializer
 
 class Team_Members_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]

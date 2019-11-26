@@ -16,7 +16,7 @@ urlpatterns = [
     path('team_members/', views.Team_Members_list.as_view()),
     path('team_members/<int:pk>/', views.Team_Members_detail.as_view()),
     path('teams/', views.Teams_list.as_view()),
-    path('teams/<int:pk>/', views.Teams_detail().as_view()),
+    path('teams/<int:pk>/', views.Teams_detail.as_view()),
     path('threads/', views.Threads_list.as_view()),
     path('threads/<int:pk>/', views.Threads_detail.as_view()),
     path('users/', views.Users_list.as_view()),
