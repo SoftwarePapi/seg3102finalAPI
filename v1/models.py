@@ -14,7 +14,7 @@ class Users(models.Model):
     program = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    #password will not have hashing for now, any kind of auth needs JWT
+    #password will not have hashing for now, any kind of auth needs JWT and the django model auth User
 
 class Teams(models.Model):
     team_id = models.AutoField(primary_key=True)
