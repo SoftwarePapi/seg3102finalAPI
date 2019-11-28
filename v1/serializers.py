@@ -33,6 +33,7 @@ class TeamsSerializer(serializers.ModelSerializer):
         instance.status = validated_data.get('status', instance.status)
         instance.min_capacity = validated_data.get('min_capacity', instance.min_capacity)
         instance.max_capacity = validated_data.get('max_capacity', instance.max_capacity)
+        instance.section_id = validated_data.get('section_id', instance.section_id)
         instance.save()
         return instance
 

@@ -35,6 +35,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 # Application definition
 
@@ -93,10 +96,6 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-#Default database engine below
-
-
 
 
 # Password validation

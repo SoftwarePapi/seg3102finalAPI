@@ -1,14 +1,13 @@
 from django.shortcuts import render
 
-from django.contrib.auth.mixins import UserPassesTestMixin
-
 from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users
 from v1.serializers import CommentsSerializer, CoursesSerializer, Section_studentsSerializer
 from v1.serializers import SectionsSerializer, Team_MembersSerializer, TeamsSerializer, ThreadsSerializer, UsersSerializer
-#from v1.permissions import IsOwnerOrReadOnly <-- not implemented
 
 from rest_framework import status, permissions, generics, viewsets
 from rest_framework.response import Response
+
+import django_filters.rest_framework
 
 # Create your views here.
 class Comments_List(generics.ListCreateAPIView):
@@ -16,6 +15,7 @@ class Comments_List(generics.ListCreateAPIView):
 
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 #RetrieveUpdateDestroyAPIView
 #RetrieveAPIView sets to readonly
@@ -29,7 +29,10 @@ class Users_list(generics.ListCreateAPIView):
     #permission_classes = [permissions.IsAuthenticated]
 
     queryset = Users.objects.all()
+    #queryset = Users.objects.filter(**self.request.query_params)
     serializer_class = UsersSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    # filterset_fields = ['program', 'account_type']
 
     # def get_queryset(self):
     #     import pdb;pdb.set_trace()
@@ -46,6 +49,7 @@ class Courses_list(generics.ListCreateAPIView):
 
     queryset = Courses.objects.all()
     serializer_class = CoursesSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Courses_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
@@ -58,6 +62,7 @@ class Section_students_list(generics.ListCreateAPIView):
 
     queryset = Section_students.objects.all()
     serializer_class = Section_studentsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Section_students_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
@@ -70,6 +75,7 @@ class Sections_list(generics.ListCreateAPIView):
 
     queryset = Sections.objects.all()
     serializer_class = SectionsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Sections_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
@@ -82,6 +88,7 @@ class Team_Members_list(generics.ListCreateAPIView):
 
     queryset = Team_Members.objects.all()
     serializer_class = Team_MembersSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Team_Members_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
@@ -94,6 +101,7 @@ class Teams_list(generics.ListCreateAPIView):
 
     queryset = Teams.objects.all()
     serializer_class = TeamsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Teams_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]
@@ -106,6 +114,7 @@ class Threads_list(generics.ListCreateAPIView):
 
     queryset = Threads.objects.all()
     serializer_class = ThreadsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
 
 class Threads_detail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = [permissions.IsAdminUser]

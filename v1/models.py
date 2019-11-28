@@ -24,6 +24,7 @@ class Teams(models.Model):
     status = models.CharField(max_length=255)
     min_capacity = models.IntegerField()
     max_capacity = models.IntegerField()
+    section_id = models.ForeignKey('Sections', on_delete=models.CASCADE)
 
 class Team_Members(models.Model):
     id = models.AutoField(primary_key=True)
