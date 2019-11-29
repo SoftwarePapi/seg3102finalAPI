@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users
+from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users, Join_Requests
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -116,5 +116,18 @@ class CommentsSerializer(serializers.ModelSerializer):
         instance.body_text = validated_data.get('body_text', instance.body_text)
         instance.author = validated_data.get('author', instance.author)
         instance.thread_id = validated_data.get('thread_id', instance.thread_id)
+        instance.save()
+        return instance
+
+class Join_RequestsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Join_Requests
+        fields = "__all__"
+    def create(self, validated_data):
+        return Join_Requests.objects.create(**validated_data)
+    def update(self, instance, validated_data):
+        instance.request_id = validated_data.get('request_id', instance.request_id)
+        instance.student_id = validated_data.get('student_id', instance.student_id)
+        instance.team_id = validated_data.get('team_id', instance.team_id)
         instance.save()
         return instance

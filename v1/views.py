@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users
-from v1.serializers import CommentsSerializer, CoursesSerializer, Section_studentsSerializer
+from v1.models import Comments, Courses, Section_students, Sections, Team_Members, Teams, Threads, Users, Join_Requests
+from v1.serializers import CommentsSerializer, CoursesSerializer, Section_studentsSerializer, Join_RequestsSerializer
 from v1.serializers import SectionsSerializer, Team_MembersSerializer, TeamsSerializer, ThreadsSerializer, UsersSerializer
 
 from rest_framework import status, permissions, generics, viewsets
@@ -121,3 +121,16 @@ class Threads_detail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Threads.objects.all()
     serializer_class = ThreadsSerializer
+
+class Join_Requests_list(generics.ListCreateAPIView):
+    #permission_classes = [permissions.IsAuthenticated]
+
+    queryset = Join_Requests.objects.all()
+    serializer_class = Join_RequestsSerializer
+    # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+
+class Join_Requests_detail(generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes = [permissions.IsAdminUser]
+
+    queryset = Join_Requests.objects.all()
+    serializer_class = Join_RequestsSerializer

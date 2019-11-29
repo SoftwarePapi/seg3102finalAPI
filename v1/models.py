@@ -58,3 +58,8 @@ class Comments(models.Model):
     body_text = models.CharField(max_length=255)
     author = models.ForeignKey('Users', on_delete=models.CASCADE)
     thread_id = models.ForeignKey('Threads', on_delete=models.CASCADE)
+
+class Join_Requests(models.Model):
+    request_id = models.AutoField(primary_key=True)
+    student_id = models.ForeignKey('Users', on_delete=models.CASCADE)
+    team_id = models.ForeignKey('Teams', on_delete=models.CASCADE)

@@ -21,6 +21,8 @@ urlpatterns = [
     path('threads/<int:pk>/', views.Threads_detail.as_view()),
     path('users/', views.Users_list.as_view()),
     path('users/<int:pk>/', views.Users_detail.as_view()),
+    path('join_requests/', views.Join_Requests_list.as_view()),
+    path('join_requests/<int:pk>', views.Join_Requests_detail.as_view()),
 
     # path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
